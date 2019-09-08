@@ -69,4 +69,4 @@ client.on("guildMemberAdd", function(member){
 });
 
 // Reaction role
-client.login(config.token);
+bot.login(process.env.token)
