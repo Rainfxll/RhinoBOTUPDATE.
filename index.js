@@ -62,7 +62,7 @@ client.on ("guildMemberRemove", member => {
 // Wiadomość powitalna.
 
 client.on("guildMemberAdd", function(member){
-    member.guild.channels.find("name", "🌠┃powitalnia").send(`(**SYSTEM** Przywitajmy użytkownika o nazwie **${member}**, zapoznaj się z regulaminem!`)
+    member.guild.channels.find("name", "🌠┃powitalnia").send(`(**SYSTEM**) Przywitajmy użytkownika o nazwie **${member}**, zapoznaj się z regulaminem!/n Mamy nadzieję że zostaniesz na dłużej!`)
 
 });
 
