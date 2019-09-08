@@ -4,18 +4,6 @@ const config = require("./config.json");
 
 client.on("ready", () => {
     console.log(`(SYSTEM) Rihno Jest gotowy do pracy`);
-
-    let statuses = [
-        "| Wkrótce nowe Aktulizacje! |",
-        "| Już aktywny 24/7 |",
-    ]
-
-    setInterval(function() { 
-        let status = statuses[Math.floor(Math.random() = statuses.length)];
-        bot.user.setActivity("| Stabilny Hosting |", {type: "WATCHING"});
-
-    }, 5000)
-
 })
 
 // Komenda r!ping
@@ -74,7 +62,7 @@ client.on ("guildMemberRemove", member => {
 // Wiadomość powitalna.
 
 client.on("guildMemberAdd", function(member){
-    member.guild.channels.find("name", "🌠┃powitalnia").send("(**SYSTEM**) Powitajmy użytkownika o nazwie @"  +  member.user.username )
+    member.guild.channels.find("name", "🌠┃powitalnia").send(`(**SYSTEM** Przywitajmy użytkownika o nazwie **${member}**, zapoznaj się z regulaminem!`)
 
 });
 
