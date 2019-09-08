@@ -69,16 +69,4 @@ client.on("guildMemberAdd", function(member){
 });
 
 // Help command
-
-if(args[0] == "help") return message.channel.send(`Chodziło ci o ${prefix}help ?`)
-
-if (args[0]) {
-    let command = args[0];
-    if(bot.commands.has(command)) {
-        command = bot.commands.get(command);
-        var SHembed = new Discord.RichEmbed()
-        .setColor("RANDOM")
-        .setAuthor(`Rhino BOT - Help`, message.guild.iconURL)
-        .setDescription(`Prefix bota to ${prefix}\n\n**Komendy:** ${command.config.name}`)
-    }}
 client.login(process.env.token);
