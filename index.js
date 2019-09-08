@@ -7,7 +7,7 @@ client.on("ready", () => {
     client.user.setActivity('| Już aktywny 24/7 |')
 
     let statuses = [
-        `Użytkowników ${bot.users.size}`
+        "| Wkrótce nowe Aktulizacje! |"
     ]
 
     setInterval(function() { 
