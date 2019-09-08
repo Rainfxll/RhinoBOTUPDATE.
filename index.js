@@ -4,7 +4,6 @@ const config = require("./config.json");
 
 client.on("ready", () => {
     console.log(`(SYSTEM) Rihno Jest gotowy do pracy`);
-    client.user.setActivity('| Już aktywny 24/7 |')
 
     let statuses = [
         "| Wkrótce nowe Aktulizacje! |",
