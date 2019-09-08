@@ -7,7 +7,8 @@ client.on("ready", () => {
     client.user.setActivity('| Już aktywny 24/7 |')
 
     let statuses = [
-        "| Wkrótce nowe Aktulizacje! |"
+        "| Wkrótce nowe Aktulizacje! |",
+        "| Już aktywny 24/7 |",
     ]
 
     setInterval(function() { 
