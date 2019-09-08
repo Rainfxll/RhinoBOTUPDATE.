@@ -4,6 +4,7 @@ const config = require("./config.json");
 
 client.on("ready", () => {
     console.log(`(SYSTEM) Rihno Jest gotowy do pracy`);
+    client.user.setActivity('| Stabilny Hosting 24/7 |', { type: 'WATCHING'});
 })
 
 // Komenda r!ping
@@ -62,7 +63,7 @@ client.on ("guildMemberRemove", member => {
 // Wiadomość powitalna.
 
 client.on("guildMemberAdd", function(member){
-    member.guild.channels.find("name", "🌠┃powitalnia").send(`(**SYSTEM**) Przywitajmy użytkownika o nazwie **${member}**, zapoznaj się z regulaminem!/n Mamy nadzieję że zostaniesz na dłużej!`)
+    member.guild.channels.find("name", "🌠┃powitalnia").send(`(**SYSTEM**) Przywitajmy użytkownika o nazwie **${member}**, zapoznaj się z regulaminem!`)
 
 });
 
