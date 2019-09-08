@@ -81,4 +81,4 @@ client.on("guildMemberAdd", function(member){
 
 // Join channel
 
-client.login(config.token);
+client.login(process.env.token);
