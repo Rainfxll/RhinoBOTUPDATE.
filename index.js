@@ -5,6 +5,7 @@ const config = require("./config.json");
 client.on("ready", () => {
     console.log(`(SYSTEM) Rihno Jest gotowy do pracy`);
     client.user.setActivity('| Stabilny Hosting 24/7 |', { type: 'WATCHING'});
+
 })
 
 // Komenda r!ping
@@ -40,7 +41,7 @@ client.on ("message", (message) => {
         message.delete();
         mentionMessage = message.content.slice (4);
         mention.sendMessage (mentionMessage);
-        message.channel.send ("Wysłano!")
+        message.channel.send ("(**SYSTEM**) Wysłano!")
     }
 })
 
@@ -67,6 +68,17 @@ client.on("guildMemberAdd", function(member){
 
 });
 
-// Join channel
+// Help command
 
+if(args[0] == "help") return message.channel.send(`Chodziło ci o ${prefix}help ?`)
+
+if (args[0]) {
+    let command = args[0];
+    if(bot.commands.has(command)) {
+        command = bot.commands.get(command);
+        var SHembed = new Discord.RichEmbed()
+        .setColor("RANDOM")
+        .setAuthor(`Rhino BOT - Help`, message.guild.iconURL)
+        .setDescription(`Prefix bota to ${prefix}\n\n**Komendy:** ${command.config.name}`)
+    }}
 client.login(process.env.token);
