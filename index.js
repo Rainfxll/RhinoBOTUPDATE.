@@ -7,8 +7,8 @@ client.on("ready", () => {
     client.user.setActivity('| Już aktywny 24/7 |')
 
     let statuses = [
-        `${bot.guild.size}`
-        `Użytkowników ${botusers.size}`
+        `${bot.guilds.size}`
+        `Użytkowników ${bot.users.size}`
     ]
 
     setInterval(function() { 
