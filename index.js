@@ -6,6 +6,17 @@ client.on("ready", () => {
     console.log(`(SYSTEM) Rihno Jest gotowy do pracy`);
     client.user.setActivity('| Już aktywny 24/7 |')
 
+    let statuses = [
+        `${bot.guild.size}`
+        `Użytkowników ${botusers.size}`
+    ]
+
+    setInterval(function() { 
+        let status = statuses[Math.floor(Math.random() = statuses.length)];
+        bot.user.setActivity("| Stabilny Hosting |", {type: "WATCHING"});
+
+    }, 5000)
+
 })
 
 // Komenda r!ping
@@ -68,5 +79,6 @@ client.on("guildMemberAdd", function(member){
 
 });
 
-// Reaction role
-client.login(process.env.token)
+// Join channel
+
+client.login(config.token);
