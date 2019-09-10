@@ -81,7 +81,7 @@ client.on('ready', () => {
         client.user.setPresence({ activity: { name: status }, status: 'online' });
 
 
-    }, 20000)
+    }, 2000)
 
 })
 
