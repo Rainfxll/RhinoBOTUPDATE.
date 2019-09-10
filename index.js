@@ -69,9 +69,7 @@ client.on("guildMemberAdd", function(member){
 
 // Status
 
-let statuses = ['| Stabilny Hosting 24/7 |'];
-
-let statuses = ['| Test |'];
+let statuses = ['| Stabilny Hosting |','| Aktulizacja za 2 dni! |','| Aktywny już 24/7 |'];
 
 client.on('ready', () => {
 
@@ -83,7 +81,7 @@ client.on('ready', () => {
         client.user.setPresence({ activity: { name: status }, status: 'online' });
 
 
-    }, 50000)
+    }, 20000)
 
 })
 
