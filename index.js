@@ -69,7 +69,7 @@ client.on("guildMemberAdd", function(member){
 
 // Status
 
-let statuses = ['| Stabilny Hosting |','| Aktulizacja za 2 dni! |','| Aktywny już 24/7 |',| 'Rhino BOT - v1.1 |'];
+let statuses = ['| Stabilny Hosting |','| Aktulizacja za 2 dni! |','| Aktywny już 24/7 |','| Rhino BOT - v1.1 |'];
 
 client.on('ready', () => {
 
