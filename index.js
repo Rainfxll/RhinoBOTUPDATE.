@@ -4,7 +4,7 @@ const config = require("./config.json");
 
 client.on("ready", () => {
     console.log(`(SYSTEM) Rihno Jest gotowy do pracy`);
-    client.user.setActivity('rhinoBot | 1.1', { type: 'STREAMING'});
+    client.user.setActivity('Do aktulizacjo zostało 2 dni!', { type: 'WATCHING'});
 
 })
 
