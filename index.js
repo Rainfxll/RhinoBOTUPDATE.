@@ -68,5 +68,21 @@ client.on("guildMemberAdd", function(member){
 
 });
 
-// Help command
+// Status
+
+let statuses = ['| Stabilny Hosting 24/7 |'];
+let statuses = ['| Aktulizacja za 2 dni! |'];
+
+client.on('ready', () => {
+    setInterval(function() {
+
+        let status = statuses[Math.floor(Math.random()* statuses.length)];
+
+        client.user.setPresence({ game: { name: status }, status: 'online' });
+        client.user.setPresence({ activity: { name: status }, status: 'online' });
+
+
+    }, 50000)
+
+})
 client.login(process.env.token);
