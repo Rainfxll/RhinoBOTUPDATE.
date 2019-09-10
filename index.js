@@ -69,10 +69,11 @@ client.on("guildMemberAdd", function(member){
 
 // Status
 
-let statuses = ['| Stabilny Hosting 24/7 |'];
-let statuses = ['| Aktulizacja za 2 dni! |'];
+let statuses = ['discord.gg/XznfRUU','| Stabilny Hosting 24/7 |'];
+let statuses = ['discord.gg/XznfRUU', '| Aktulizacja za 2 dni! |'];
 
 client.on('ready', () => {
+
     setInterval(function() {
 
         let status = statuses[Math.floor(Math.random()* statuses.length)];
