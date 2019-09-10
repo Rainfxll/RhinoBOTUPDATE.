@@ -84,4 +84,5 @@ client.on('ready', () => {
     }, 50000)
 
 })
+
 client.login(process.env.token);
