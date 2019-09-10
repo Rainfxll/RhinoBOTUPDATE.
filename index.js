@@ -69,7 +69,9 @@ client.on("guildMemberAdd", function(member){
 
 // Status
 
-let statuses = ['discord.gg/XznfRUU','| Stabilny Hosting 24/7 |'];
+let statuses = ['| Stabilny Hosting 24/7 |'];
+
+let statuses = ['| Test |'];
 
 client.on('ready', () => {
 
