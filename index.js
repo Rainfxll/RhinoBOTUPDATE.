@@ -86,35 +86,30 @@ client.on('ready', () => {
 })
 
 
-
-const { RichEmbed } = require("discord.js");
-
-module.exports = {
-    name: "say",
-    aliases: ["bc", "broadcast"],
-    description: "Says your input via the bot",
-    usage: "<input>",
-    run: (client, message, args) => {
-        message.delete();
-
-        if (!message.member.hasPermission("MANAGE_MESSAGES"))
-            return message.reply("You don't have the required permissions to use this command.").then(m => m.delete(5000));
-
-        if (args.length < 0)
-            return message.reply("Nothing to say?").then(m => m.delete(5000));
-
-        const roleColor = message.guild.me.highestRole.hexColor;
-
-        if (args[0].toLowerCase() === "embed") {
-            const embed = new RichEmbed()
-                .setDescription(args.slice(1).join(" "))
-                .setColor(roleColor === "#000000" ? "#ffffff" : roleColorv);
-
-            message.channel.send(embed);
-        } else {
-            message.channel.send(args.join(" "));
+ /**
+         * Kick the member
+         * Make sure you run this on a member, not a user!
+         * There are big differences between a user and a member
+         */
+        member.kick('Optional reason that will display in the audit logs').then(() => {
+            // We let the message author know we were able to kick the person
+            message.reply(`Successfully kicked ${user.tag}`);
+          }).catch(err => {
+            // An error happened
+            // This is generally due to the bot not being able to kick the member,
+            // either due to missing permissions or role hierarchy
+            message.reply('I was unable to kick the member');
+            // Log the error
+            console.error(err);
+          });
+          {
+          // The mentioned user isn't in this guild
+          message.reply('That user isn\'t in this guild!');
         }
-    }
-}
+      // Otherwise, if no user was mentioned
+        {
+        message.reply('You didn\'t mention the user to kick!');
+      }
+
 
 client.login(process.env.token);
