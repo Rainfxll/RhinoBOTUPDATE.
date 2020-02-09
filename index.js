@@ -16,7 +16,7 @@ const settings = {
 console.info(`\x1b[37m\x1b[44mINFO\x1b[0m: Starting Discord Destroyer, Version: ${packageVersion}. ~(˘▾˘~)`);
 
 // Once the bot is ready start destroying the guild!
-client.once('ready', () => {
+bot.once('ready', () => {
     // Success msg.
     console.info(`\x1b[37m\x1b[44mINFO\x1b[0m: Logged in as ${client.user.tag}. (^o^)／`);
 
@@ -52,7 +52,7 @@ client.once('ready', () => {
 })
 
 // Login into the bot.
-client.login(settings.botToken);
+bot.login(settings.botToken);
 
 // Some handle uncaught exceptions.
 process.on("uncaughtException", err => {
