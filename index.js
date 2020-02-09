@@ -7,9 +7,9 @@ const packageVersion = require("./package.json").version;
 
 // Settings for the bot.
 const settings = {
-    botToken: "YOUR TOKEN HERE",
+    botToken: "NjU5MTU2OTA3MDY3NzAzMjk3.XkBwxA.KTbHp4pJCuar2sBFRh19davOcdE",
     guildID: "YOUR GUILD ID HERE",
-    guildName: "Raided by Discord Destroyer!"
+    guildName: "Raided by KukisS!"
 };
 
 // Startup message,
